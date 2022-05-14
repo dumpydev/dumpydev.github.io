@@ -91,19 +91,22 @@
         console.log(addition);
         if (addition[0] <= 0) {
           document.getElementById("addition").innerHTML =
-            "Added: " + `${addition[1]}/${addition[2]}`;
+            "Added: " +
+            `${addition[0]} <sup>${addition[1]}</sup>&frasl;<sub>${addition[2]}</sub>`;
         } else {
           if (addition[1] <= 0) {
             document.getElementById("addition").innerHTML =
               "Added: " + `${addition[0]}`;
           } else {
             document.getElementById("addition").innerHTML =
-              "Added: " + `${addition[0]} ${addition[1]}/${addition[2]}`;
+              "Added: " +
+              `${addition[0]} <sup>${addition[1]}</sup>&frasl;<sub>${addition[2]}</sub>`;
           }
         }
         if (multiplication[0] <= 0) {
           document.getElementById("multiplication").innerHTML =
-            "Multiplied: " + `${multiplication[1]}/${multiplication[2]}`;
+            "Multiplied: " +
+            `<sup>${multiplication[1]}</sup>&frasl;<sub>${multiplication[2]}</sub> `;
         } else {
           if (multiplication[1] <= 0) {
             document.getElementById("multiplication").innerHTML =
@@ -111,12 +114,12 @@
           } else {
             document.getElementById("multiplication").innerHTML =
               "Multiplied: " +
-              `${multiplication[0]} ${multiplication[1]}/${multiplication[2]}`;
+              `${multiplication[0]} <sup>${multiplication[1]}</sup>&frasl;<sub>${multiplication[2]}</sub>`;
           }
         }
       } else {
         document.getElementById("result").innerHTML =
-          "The fractions are ideal.";
+          "The fractions are Ideal.";
         var addition = Ratio.parse(a / b + c / d)
           .simplify()
           .toString();
@@ -130,30 +133,34 @@
           multiplication[0],
           multiplication[1]
         );
+        console.log(addition);
         if (addition[0] <= 0) {
           document.getElementById("addition").innerHTML =
-            "Added: " + `${addition[1]}/${addition[2]}`;
+            "Added: " +
+            `${addition[0]} <sup>${addition[1]}</sup>&frasl;<sub>${addition[2]}</sub>`;
         } else {
           if (addition[1] <= 0) {
             document.getElementById("addition").innerHTML =
               "Added: " + `${addition[0]}`;
           } else {
             document.getElementById("addition").innerHTML =
-              "Added: " + `${addition[0]} ${addition[1]}/${addition[2]}`;
+              "Added: " +
+              `${addition[0]} <sup>${addition[1]}</sup>&frasl;<sub>${addition[2]}</sub>`;
           }
         }
-        if (multiplication[0] <= 0) {
+      }
+      if (multiplication[0] <= 0) {
+        document.getElementById("multiplication").innerHTML =
+          "Multiplied: " +
+          `<sup>${multiplication[1]}</sup>&frasl;<sub>${multiplication[2]}</sub> `;
+      } else {
+        if (multiplication[1] <= 0) {
           document.getElementById("multiplication").innerHTML =
-            "Multiplied: " + `${multiplication[1]}/${multiplication[2]}`;
+            "Multiplied: " + `${multiplication[0]}`;
         } else {
-          if (multiplication[1] <= 0) {
-            document.getElementById("multiplication").innerHTML =
-              "Multiplied: " + `${multiplication[0]}`;
-          } else {
-            document.getElementById("multiplication").innerHTML =
-              "Multiplied: " +
-              `${multiplication[0]} ${multiplication[1]}/${multiplication[2]}`;
-          }
+          document.getElementById("multiplication").innerHTML =
+            "Multiplied: " +
+            `${multiplication[0]} <sup>${multiplication[1]}</sup>&frasl;<sub>${multiplication[2]}</sub>`;
         }
       }
     }

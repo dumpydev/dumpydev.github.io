@@ -23,7 +23,9 @@
 
   <body>
     <img src="logo.png" alt="logo" class="logo" />
-    <h3 class="rainbow" style="font-size: 20pt">Made by <strong>Andrew Wang</strong></h3>
+    <h3 class="rainbow" style="font-size: 20pt">
+      Made by <strong>Andrew Wang</strong>
+    </h3>
     <h4><a class="rainbow" href="https://dumpyy.gq">https://dumpyy.gq</a></h4>
     <h4>
       <a class="rainbow" href="https://github.com/dumpydev"
@@ -52,8 +54,16 @@
       <code class="rainbow">
         To make a pair of ideal fractions, the numerator must be the same and
         both denominators added should equal the numerator, eg. 4/1 and 4/3 are
-        ideal.</code>
-      <p class="rainbow">Credits to <strong><a class="rainbow" href="https://github.com/LarryBattle/Ratio.js">ratio.js</a></strong></p>
+        ideal.</code
+      >
+      <p class="rainbow">
+        Credits to
+        <strong
+          ><a class="rainbow" href="https://github.com/LarryBattle/Ratio.js"
+            >ratio.js</a
+          ></strong
+        >
+      </p>
     </span>
   </body>
   <script>
@@ -62,30 +72,89 @@
       var b = document.getElementById("denominator").value;
       var c = document.getElementById("numerator2").value;
       var d = document.getElementById("denominator2").value;
-      if (((a / b) * c) / d != (a / b + c / d)) {
-        document.getElementById("result").innerHTML = "OUTPUT: NOT IDEAL";
-        document.getElementById("addition").innerHTML =
-          "Added: " +
-          Ratio.parse(a / b + c / d)
-            .simplify()
-            .toString();
-        document.getElementById("multiplication").innerHTML =
-          "Multiplied: " +
-          Ratio.parse(((a / b) * c) / d)
-            .simplify()
-            .toString();
+      if (((a / b) * c) / d != a / b + c / d) {
+        document.getElementById("result").innerHTML =
+          "The fractions are not ideal.";
+        var addition = Ratio.parse(a / b + c / d)
+          .simplify()
+          .toString();
+        addition = String(addition).split("/");
+        addition = improperFractionToMixedNumber(addition[0], addition[1]);
+        var multiplication = Ratio.parse(((a / b) * c) / d)
+          .simplify()
+          .toString();
+        multiplication = String(multiplication).split("/");
+        multiplication = improperFractionToMixedNumber(
+          multiplication[0],
+          multiplication[1]
+        );
+        console.log(addition);
+        if (addition[0] <= 0) {
+          document.getElementById("addition").innerHTML =
+            "Added: " + `${addition[1]}/${addition[2]}`;
+        } else {
+          if (addition[1] <= 0) {
+            document.getElementById("addition").innerHTML =
+              "Added: " + `${addition[0]}`;
+          } else {
+            document.getElementById("addition").innerHTML =
+              "Added: " + `${addition[0]} ${addition[1]}/${addition[2]}`;
+          }
+        }
+        if (multiplication[0] <= 0) {
+          document.getElementById("multiplication").innerHTML =
+            "Multiplied: " + `${multiplication[1]}/${multiplication[2]}`;
+        } else {
+          if (multiplication[1] <= 0) {
+            document.getElementById("multiplication").innerHTML =
+              "Multiplied: " + `${multiplication[0]}`;
+          } else {
+            document.getElementById("multiplication").innerHTML =
+              "Multiplied: " +
+              `${multiplication[0]} ${multiplication[1]}/${multiplication[2]}`;
+          }
+        }
       } else {
-        document.getElementById("result").innerHTML = "OUTPUT: IDEAL";
-        document.getElementById("addition").innerHTML =
-          "Added: " +
-          Ratio.parse(a / b + c / d)
-            .simplify()
-            .toString();
-        document.getElementById("multiplication").innerHTML =
-          "Multiplied: " +
-          Ratio.parse(((a / b) * c) / d)
-            .simplify()
-            .toString();
+        document.getElementById("result").innerHTML =
+          "The fractions are ideal.";
+        var addition = Ratio.parse(a / b + c / d)
+          .simplify()
+          .toString();
+        addition = String(addition).split("/");
+        addition = improperFractionToMixedNumber(addition[0], addition[1]);
+        var multiplication = Ratio.parse(((a / b) * c) / d)
+          .simplify()
+          .toString();
+        multiplication = String(multiplication).split("/");
+        multiplication = improperFractionToMixedNumber(
+          multiplication[0],
+          multiplication[1]
+        );
+        if (addition[0] <= 0) {
+          document.getElementById("addition").innerHTML =
+            "Added: " + `${addition[1]}/${addition[2]}`;
+        } else {
+          if (addition[1] <= 0) {
+            document.getElementById("addition").innerHTML =
+              "Added: " + `${addition[0]}`;
+          } else {
+            document.getElementById("addition").innerHTML =
+              "Added: " + `${addition[0]} ${addition[1]}/${addition[2]}`;
+          }
+        }
+        if (multiplication[0] <= 0) {
+          document.getElementById("multiplication").innerHTML =
+            "Multiplied: " + `${multiplication[1]}/${multiplication[2]}`;
+        } else {
+          if (multiplication[1] <= 0) {
+            document.getElementById("multiplication").innerHTML =
+              "Multiplied: " + `${multiplication[0]}`;
+          } else {
+            document.getElementById("multiplication").innerHTML =
+              "Multiplied: " +
+              `${multiplication[0]} ${multiplication[1]}/${multiplication[2]}`;
+          }
+        }
       }
     }
     document.addEventListener("keypress", function (event) {
@@ -94,5 +163,12 @@
         document.getElementById("calculate").click();
       }
     });
+    function improperFractionToMixedNumber(n, d) {
+      i = (n / d) >> 0;
+
+      n -= i * d;
+
+      return [i, n, d];
+    }
   </script>
 </html>

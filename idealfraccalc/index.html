@@ -75,7 +75,7 @@
             .simplify()
             .toString();
       } else {
-        console.log(a / b + c / d);
+        document.getElementById("result").innerHTML = "OUTPUT: IDEAL";
         document.getElementById("addition").innerHTML =
           "Added: " +
           Ratio.parse(a / b + c / d)

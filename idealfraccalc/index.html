@@ -1,94 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Ideal Fraction Checker</title>
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="https://dumpyy.gq/idealfraccalc/logo.png"
-    />
-    <meta property="og:site_name" content="Ideal Fraction Checker" />
-    <meta property="og:url" content="https://dumpyy.gq/idealfraccalc" />
-    <meta property="og:title" content="Ideal Fraction Checker" />
-    <meta
-      property="og:description"
-      content="Ideal fraction checker! Made by dumpy for math class."
-    />
-    <icon href="./favicon.ico" type="image/x-icon">
+
+<head>
+  <title>Ideal Fraction Checker</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://dumpyy.gq/idealfraccalc/logo.png" />
+  <meta property="og:site_name" content="Ideal Fraction Checker" />
+  <meta property="og:url" content="https://dumpyy.gq/idealfraccalc" />
+  <meta property="og:title" content="Ideal Fraction Checker" />
+  <meta property="og:description" content="Ideal fraction checker! Made by dumpy for math class." />
+  <icon href="./favicon.ico" type="image/x-icon">
     <script src="./dist/jquery-3.6.0.min.js"></script>
     <script src="./dist/fractions.js"></script>
-    
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
-    
-  </head>
 
-  <body>
-    <img src="logo.png" alt="logo" class="logo" />
-    <h3 class="rainbow" style="font-size: 20pt">
-      Made by <strong>Andrew Wang</strong>
-    </h3>
-    <h4><a class="rainbow" href="https://dumpyy.gq">https://dumpyy.gq</a></h4>
-    <h4>
-      <a class="rainbow" href="https://github.com/dumpydev"
-        >https://github.com/dumpydev</a
-      >
-    </h4>
-    <span id="fractioninput">
-      <input class="input" id="numerator" type="number" placeholder=" " />
-      <input class="input" id="numerator2" type="number" placeholder=" " />
-      <span style="padding-top: 8cm; padding-bottom: 8cm; width: 60px">
-        <hr style="width: 120px" />
-      </span>
-      <input class="input" id="denominator" type="number" placeholder=" " />
-      <input class="input" id="denominator2" type="number" placeholder=" " />
-      <span style="padding-top: 20cm"><br /></span>
-      <br />
-      <button id="calculate" class="custom-btn btn-7" onclick="checkFraction()">
-        <span>Calculate!</span>
-      </button>
-      <hr />
-      <h1 id="result" class="rainbow">OUTPUT:</h1>
-      <h3 class="rainbow" id="addition"></h3>
-      <h3 class="rainbow" id="multiplication"></h3>
-      <hr />
-      <code class="rainbow">
+</head>
+
+<body>
+  <h3 class="rainbow" style="font-size: 40pt; font-family: 'Koulen', cursive;">
+    Made by <strong>Andrew Wang</strong>
+  </h3>
+  <h4><a class="rainbow" href="https://dumpyy.gq">https://dumpyy.gq</a></h4>
+  <h4>
+    <a class="rainbow" href="https://github.com/dumpydev">https://github.com/dumpydev</a>
+  </h4>
+  <div id="fractioninput rainbowbg">
+    <input class="input" id="numerator" type="number" placeholder=" " />
+    <input class="input" id="numerator2" type="number" placeholder=" " />
+    <span style="padding-top: 8cm; padding-bottom: 8cm; width: 35px">
+      <hr style="width: 60px" />
+    </span>
+    <input class="input" id="denominator" type="number" placeholder=" " />
+    <input class="input" id="denominator2" type="number" placeholder=" " />
+    <span style="padding-top: 20cm"><br /></span>
+    <br />
+    <button id="calculate" class="custom-btn btn-7" onclick="checkFraction()">
+      <span>Calculate!</span>
+    </button>
+    <span style="padding-top: 10cm"><br /></span>
+    <br />
+    <button id="toggledark" class="custom-btn btn-3" onclick="toggleDarkMode()">
+      <span>Dark/Light</span>
+    </button>
+  </div>
+  <hr />
+  <h1 id="result" class="rainbow">OUTPUT:</h1>
+  <h3 class="rainbow" id="addition"></h3>
+  <h3 class="rainbow" id="multiplication"></h3>
+  <hr />
+  <code class="rainbow">
         To make a pair of ideal fractions, the numerator must be the same and
         both denominators added should equal the numerator, eg. 4/1 and 4/3 are
-        ideal.</code
-      >
-      <p class="rainbow">
-        Credits to
-        <strong
-          ><a class="rainbow" href="https://github.com/ekg/fraction.js"
-            >fraction.js</a
-          ></strong
-        >
-      </p>
-      <p style="font-size: 20pt;" class="rainbow">version <strong>3.4</strong></p>
-  </body>
+        ideal.</code>
+  <p class="rainbow">
+    Credits to
+    <strong><a class="rainbow" href="https://github.com/ekg/fraction.js">fraction.js</a></strong>
+  </p>
+  <p style="font-size: 20pt;" class="rainbow">version <strong>4.0b</strong></p>
   <script>
-    $("input").on("keyup", function(event) {
-      $("#calculate").click()
+    $(document).ready(function () {
+      $("#numerator").focus();
+      if (localStorage.getItem("darkmode") == null) {
+        localStorage.setItem("darkmode", "false");
+      } else {
+        if (localStorage.getItem("darkmode") == "true") {
+          $("html").css("background-color", "#1a1a1a");
+        } else {
+          $("html").css("background-color", "#f2f2f2");
+        }
+      }
+    });
+    $("input").keydown(function (e) {
+      if (e.which == 13) {
+        checkFraction();
+      }
     });
     function checkFraction() {
-
       var a = $("#numerator").val();
       var b = $("#denominator").val();
       var c = $("#numerator2").val();
       var d = $("#denominator2").val();
+
       var added = new Fraction(a, b)
         .add(new Fraction(c, d))
         .toString();
       var multiplied = new Fraction(a, b)
         .multiply(new Fraction(c, d))
         .toString();
-      console.log(added);
-      console.log(multiplied);
-      if(added != "NaN" || multiplied != "NaN") {
-        if(added != multiplied) {
+      if (added != "NaN" || multiplied != "NaN") {
+        if (added != multiplied) {
           $("#result").html("Output: Not Ideal!");
           $("#addition").html("Addition: " + added);
           $("#multiplication").html("Multiplication: " + multiplied);
@@ -100,9 +103,28 @@
       } else {
         $("#result").html("Missing Input.");
       }
-      
     }
-      
+    function toggleDarkMode() {
+      //if darkmode exists, read it if not create it
+      if (localStorage.getItem("darkmode") == null) {
+        localStorage.setItem("darkmode", "false");
+      } else {
+        if (localStorage.getItem("darkmode") == "true") {
+          localStorage.setItem("darkmode", "false");
+        } else {
+          localStorage.setItem("darkmode", "true");
+        }
+        if (localStorage.getItem("darkmode") == "true") {
+          $("html").css("background-color", "#1a1a1a");
+        } else {
+          $("html").css("background-color", "#f2f2f2");
+        }
+      }
 
+
+
+    }
   </script>
+</body>
+
 </html>

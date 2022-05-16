@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
 html {
 
     font-family: 'Ubuntu', sans-serif;
@@ -14,7 +14,7 @@ html {
     border: 3px solid;
 }
 .input {
-    width: 60px;
+    width: 30px;
 }
 .rainbow {
     background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
@@ -24,14 +24,11 @@ html {
     animation: rainbow_animation 6s ease-in-out infinite;
     background-size: 400% 100%;
 }
-.grid {
-    display: grid;
-    grid-template-columns: 1;
-    grid-template-rows: repeat(3, 1fr);
-    grid-gap: 10px;
-    margin: auto;
-    width: 100%;
-    height: 100%;
+.rainbowbg {
+    background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
+    color: transparent;
+    width: 60px;
+    height: 60px;
 }
 .addition {
     grid-column: 1;
@@ -56,19 +53,17 @@ html {
 .custom-btn {
     width: 130px;
     height: 40px;
-    color: #fff;
+    color: rgb(255, 255, 255);
     border-radius: 5px;
-    padding: 10px 25px;
-    font-family: 'Lato', sans-serif;
+    padding: 15px 30px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 24px;
     font-weight: 500;
     background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
-    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
-        7px 7px 20px 0px rgba(0, 0, 0, .1),
-        4px 4px 5px 0px rgba(0, 0, 0, .1);
     outline: none;
 }
 
@@ -93,11 +88,6 @@ html {
     right: 0;
     bottom: 0;
     background: rgba(251, 75, 2, 1);
-    box-shadow:
-        -7px -7px 20px 0px rgba(255, 255, 255, .9),
-        -4px -4px 5px 0px rgba(255, 255, 255, .9),
-        7px 7px 20px 0px rgba(0, 0, 0, .2),
-        4px 4px 5px 0px rgba(0, 0, 0, .3);
     transition: all 0.3s ease;
 }
 
@@ -131,11 +121,6 @@ html {
     left: 0;
     top: 0;
     background: rgba(251, 75, 2, 1);
-    box-shadow:
-        -7px -7px 20px 0px rgba(255, 255, 255, .9),
-        -4px -4px 5px 0px rgba(255, 255, 255, .9),
-        7px 7px 20px 0px rgba(0, 0, 0, .2),
-        4px 4px 5px 0px rgba(0, 0, 0, .3);
     transition: all 0.3s ease;
 }
 

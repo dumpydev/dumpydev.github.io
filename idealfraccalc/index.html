@@ -15,12 +15,14 @@
       content="Ideal fraction checker! Made by dumpy for math class."
     />
     <icon href="./favicon.ico" type="image/x-icon">
-    <script src="./dist/Ratio-0.4.1.js"></script>
     <script src="./dist/jquery-3.6.0.min.js"></script>
+    <script src="./dist/fractions.js"></script>
+    
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
+    
   </head>
 
   <body>
@@ -60,249 +62,47 @@
       <p class="rainbow">
         Credits to
         <strong
-          ><a class="rainbow" href="https://github.com/LarryBattle/Ratio.js"
-            >ratio.js</a
+          ><a class="rainbow" href="https://github.com/ekg/fraction.js"
+            >fraction.js</a
           ></strong
         >
-
-      
       </p>
-      <h1 class="rainbow">version 2.2</h1>
-      <hr>
-      <h1 class="rainbow">
-        Fraction Calculator!
-        </h1>
-        <div class="grid">
-          <span id="fractioninput" class="addition">
-          <input class="input" id="an" type="number" placeholder=" " />
-          <input class="input" id="an2" type="number" placeholder=" " />
-          <span style="padding-top: 8cm; padding-bottom: 8cm; width: 60px">
-            <hr style="width: 120px" />
-          </span>
-          <input class="input" id="ad" type="number" placeholder=" " />
-          <input class="input" id="ad2" type="number" placeholder=" " />
-          <span style="padding-top: 20cm"><br /></span>
-          <br />
-          <button id="add" class="custom-btn btn-3" onclick="addFraction(`${document.getElementById('an').value}/${document.getElementById('an2').value}`,`${document.getElementById('ad').value}/${document.getElementById('ad2').value}` )">
-            <span>Add!</span>
-          </button>
-          <h1 class="rainbow" id="addresult">OUTPUT: </h1>
-        </span>
-        <span id="fractioninput" class="multiplication">
-          <input class="input" id="mn" type="number" placeholder=" " />
-          <input class="input" id="mn2" type="number" placeholder=" " />
-          <span style="padding-top: 8cm; padding-bottom: 8cm; width: 60px">
-            <hr style="width: 120px" />
-          </span>
-          <input class="input" id="md" type="number" placeholder=" " />
-          <input class="input" id="md2" type="number" placeholder=" "  />
-          <span style="padding-top: 20cm"><br /></span>
-          <br />
-          <button id="multiply" class="custom-btn btn-3" onclick="multiplyFraction(`${document.getElementById('mn').value}/${document.getElementById('mn2').value}`,`${document.getElementById('md').value}/${document.getElementById('md2').value}` )">
-            <span>Multiply!</span>
-          </button>
-          <h1 class="rainbow" id="multiplyresult">OUTPUT: </h1>
-        </span>
-      </div>
-        
-        
-    </span>
+      <p style="font-size: 20pt;" class="rainbow">version <strong>3.4</strong></p>
   </body>
-
-
-
   <script>
-    $("input").on("keydown", function search(e) {
-    if (
-        $(this).attr("id") == "an" ||
-        $(this).attr("id") == "an2" ||
-        $(this).attr("id") == "ad" ||
-        $(this).attr("id") == "ad2"
-    ) {
-        if (e.keyCode == 13) {
-            e.preventDefault();
-            $("#add").click();
-        }
-    } else if (
-        $(this).attr("id") == "numerator" ||
-        $(this).attr("id") == "numerator2" ||
-        $(this).attr("id") == "denominator" ||
-        $(this).attr("id") == "denominator2"
-    ) {
-        if (e.keyCode == 13) {
-            e.preventDefault();
-            $("#calculate").click();
-        }
-    } else if (
-        $(this).attr("id") == "md" ||
-        $(this).attr("id") == "md2" ||
-        $(this).attr("id") == "mn" ||
-        $(this).attr("id") == "mn2"
-    ) {
-        if (e.keyCode == 13) {
-            e.preventDefault();
-            $("#multiply").click();
-        }
-    }
-});
-function runclick(e, buttonid) {
-    e = e || window.event;
-    if (e.keyCode == 13) {
-        document.getElementById(buttonid).click();
-    }
-}
-function addFraction(a, b) {
-    a = String(a).split("/");
-    b = String(b).split("/");
-    var x = String(
-        Ratio.parse(a[0] / a[1] + b[0] / b[1])
-            .simplify()
-            .toString()
-    ).split("/");
-    x = improperFractionToMixedNumber(x[0], x[1]);
-    if (x[0] <= 0) {
-        document.getElementById("addresult").innerHTML = `${x[1]}/${x[2]} raw(${
-            a[0] / a[1] + b[0] / b[1]
-        })`;
-    } else {
-        if (x[1] <= 0) {
-            document.getElementById("addresult").innerHTML = `${x[0]} raw(${
-                a[0] / a[1] + b[0] / b[1]
-            })`;
-        } else {
-            document.getElementById("addresult").innerHTML = `${x[0]} <sup>${
-                x[1]
-            }</sup>&frasl;<sub>${x[2]}</sub> raw(${String(
-                (a[0] / a[1] + b[0] / b[1]).toFixed(2)
-            )})`;
-        }
-    }
-}
-function multiplyFraction(a, b) {
-    a = String(a).split("/");
-    b = String(b).split("/");
-    var x = String(
-        Ratio.parse(((a[0] / a[1]) * b[0]) / b[1])
-            .simplify()
-            .toString()
-    ).split("/");
-    x = improperFractionToMixedNumber(x[0], x[1]);
-    if (x[0] <= 0) {
-        document.getElementById("multiplyresult").innerHTML = `${x[1]}/${x[2]}`;
-    } else {
-        if (x[1] <= 0) {
-            document.getElementById("multiplyresult").innerHTML = `${x[0]}`;
-        } else {
-            document.getElementById(
-                "multiplyresult"
-            ).innerHTML = `${x[0]} <sup>${x[1]}</sup>&frasl;<sub>${x[2]}</sub>`;
-        }
-    }
-}
-function checkFraction() {
-    var a = document.getElementById("numerator").value;
-    var b = document.getElementById("denominator").value;
-    var c = document.getElementById("numerator2").value;
-    var d = document.getElementById("denominator2").value;
-    if ((a / b) * (c / d) != a / b + c / d) {
-        document.getElementById("result").innerHTML =
-            "The fractions are not ideal.";
-        var addition = Ratio.parse(a / b + c / d)
-            .simplify()
-            .toString();
-        addition = String(addition).split("/");
-        addition = improperFractionToMixedNumber(addition[0], addition[1]);
-        var multiplication = Ratio.parse(((a / b) * c) / d)
-            .simplify()
-            .toString();
-        multiplication = String(multiplication).split("/");
-        multiplication = improperFractionToMixedNumber(
-            multiplication[0],
-            multiplication[1]
-        );
-        console.log(addition);
-        if (addition[0] <= 0) {
-            document.getElementById("addition").innerHTML =
-                "Added: " +
-                `${addition[0]} <sup>${addition[1]}</sup>&frasl;<sub>${addition[2]}</sub>`;
-        } else {
-            if (addition[1] <= 0) {
-                document.getElementById("addition").innerHTML =
-                    "Added: " + `${addition[0]}`;
-            } else {
-                document.getElementById("addition").innerHTML =
-                    "Added: " +
-                    `${addition[0]} <sup>${addition[1]}</sup>&frasl;<sub>${addition[2]}</sub>`;
-            }
-        }
-        if (multiplication[0] <= 0) {
-            document.getElementById("multiplication").innerHTML =
-                "Multiplied: " +
-                `<sup>${multiplication[1]}</sup>&frasl;<sub>${multiplication[2]}</sub> `;
-        } else {
-            if (multiplication[1] <= 0) {
-                document.getElementById("multiplication").innerHTML =
-                    "Multiplied: " + `${multiplication[0]}`;
-            } else {
-                document.getElementById("multiplication").innerHTML =
-                    "Multiplied: " +
-                    `${multiplication[0]} <sup>${multiplication[1]}</sup>&frasl;<sub>${multiplication[2]}</sub>`;
-            }
-        }
-    } else {
-        document.getElementById("result").innerHTML =
-            "The fractions are Ideal.";
-        var addition = Ratio.parse(a / b + c / d)
-            .simplify()
-            .toString();
-        addition = String(addition).split("/");
-        addition = improperFractionToMixedNumber(addition[0], addition[1]);
-        var multiplication = Ratio.parse(((a / b) * c) / d)
-            .simplify()
-            .toString();
-        multiplication = String(multiplication).split("/");
-        multiplication = improperFractionToMixedNumber(
-            multiplication[0],
-            multiplication[1]
-        );
-        console.log(addition);
-        if (addition[0] <= 0) {
-            document.getElementById("addition").innerHTML =
-                "Added: " +
-                `${addition[0]} <sup>${addition[1]}</sup>&frasl;<sub>${addition[2]}</sub>`;
-        } else {
-            if (addition[1] <= 0) {
-                document.getElementById("addition").innerHTML =
-                    "Added: " + `${addition[0]}`;
-            } else {
-                document.getElementById("addition").innerHTML =
-                    "Added: " +
-                    `${addition[0]} <sup>${addition[1]}</sup>&frasl;<sub>${addition[2]}</sub>`;
-            }
-        }
-    }
-    if (multiplication[0] <= 0) {
-        document.getElementById("multiplication").innerHTML =
-            "Multiplied: " +
-            `<sup>${multiplication[1]}</sup>&frasl;<sub>${multiplication[2]}</sub> `;
-    } else {
-        if (multiplication[1] <= 0) {
-            document.getElementById("multiplication").innerHTML =
-                "Multiplied: " + `${multiplication[0]}`;
-        } else {
-            document.getElementById("multiplication").innerHTML =
-                "Multiplied: " +
-                `${multiplication[0]} <sup>${multiplication[1]}</sup>&frasl;<sub>${multiplication[2]}</sub>`;
-        }
-    }
-}
-function improperFractionToMixedNumber(n, d) {
-    i = (n / d) >> 0;
+    $("input").on("keyup", function(event) {
+      $("#calculate").click()
+    });
+    function checkFraction() {
 
-    n -= i * d;
-
-    return [i, n, d];
-}
+      var a = $("#numerator").val();
+      var b = $("#denominator").val();
+      var c = $("#numerator2").val();
+      var d = $("#denominator2").val();
+      var added = new Fraction(a, b)
+        .add(new Fraction(c, d))
+        .toString();
+      var multiplied = new Fraction(a, b)
+        .multiply(new Fraction(c, d))
+        .toString();
+      console.log(added);
+      console.log(multiplied);
+      if(added != "NaN" || multiplied != "NaN") {
+        if(added != multiplied) {
+          $("#result").html("Output: Not Ideal!");
+          $("#addition").html("Addition: " + added);
+          $("#multiplication").html("Multiplication: " + multiplied);
+        } else {
+          $("#result").html("Output: Ideal!");
+          $("#addition").html("Addition: " + added);
+          $("#multiplication").html("Multiplication: " + multiplied);
+        }
+      } else {
+        $("#result").html("Missing Input.");
+      }
+      
+    }
+      
 
   </script>
 </html>

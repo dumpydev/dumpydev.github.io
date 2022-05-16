@@ -20,13 +20,10 @@
 </head>
 
 <body>
-  <h3 class="rainbow" style="font-size: 40pt; font-family: 'Koulen', cursive;">
-    <strong>Ideal Fraction Calculator!</strong>
-  </h3>
-  <h4><a class="rainbow" href="https://dumpyy.gq">https://dumpyy.gq</a></h4>
-  <h4>
-    <a class="rainbow" href="https://github.com/dumpydev">https://github.com/dumpydev</a>
-  </h4>
+  <img src="./newlogo.png" alt="logo" class="logo" width="230" height="230" />
+  <h4><a class="rainbow" href="https://dumpyy.gq">https://dumpyy.gq</a> <a class="rainbow"
+      href="https://github.com/dumpydev">https://github.com/dumpydev</a></h4>
+
   <div id="fractioninput rainbowbg">
     <input class="input" id="numerator" type="number" placeholder=" " />
     <input class="input" id="numerator2" type="number" placeholder=" " />
@@ -45,12 +42,17 @@
     <button id="toggledark" class="custom-btn btn-3" onclick="toggleDarkMode()">
       <span>Dark/Light</span>
     </button>
+    <button id="calculate" class="custom-btn btn-7" onclick="clearOutput()">
+      <span>Clear!</span>
+    </button>
   </div>
-  <hr />
-  <h1 id="result" class="rainbow">OUTPUT:</h1>
+  <span style="padding-top: 10cm"><br /></span>
+  <br />
+  <h1 id="result" class="rainbow"></h1>
   <h3 class="rainbow" id="addition"></h3>
   <h3 class="rainbow" id="multiplication"></h3>
-  <hr />
+  <span style="padding-top: 10cm"><br /></span>
+  <br />
   <code class="rainbow">
         To make a pair of ideal fractions, the numerator must be the same and
         both denominators added should equal the numerator, eg. 4/1 and 4/3 are
@@ -63,12 +65,12 @@
     Thank you to <strong><a class="rainbow" href="https://codepen.io/yuhomyan">yuhomyan</a> for the <a class="rainbow"
         href="https://codepen.io/yuhomyan/pen/OJMejWJ">buttons!</a></strong>
   </p>
-  <p style="font-size: 20pt;" class="rainbow">version <strong>4.2a</strong></p>
+  <p style="font-size: 20pt;" class="rainbow">version <strong>4.4a</strong></p>
   <script>
     $(document).ready(function () {
       $("#numerator").focus();
       if (localStorage.getItem("darkmode") == null) {
-        localStorage.setItem("darkmode", "false");
+        localStorage.setItem("darkmode", "true");
       } else {
         if (localStorage.getItem("darkmode") == "true") {
           $("html").css("background-color", "#1a1a1a");
@@ -96,11 +98,11 @@
         .toString();
       if (added != "NaN" || multiplied != "NaN") {
         if (added != multiplied) {
-          $("#result").html("Output: Not Ideal!");
+          $("#result").html("Not Ideal!");
           $("#addition").html("Addition: " + added);
           $("#multiplication").html("Multiplication: " + multiplied);
         } else {
-          $("#result").html("Output: Ideal!");
+          $("#result").html("Ideal!");
           $("#addition").html("Addition: " + added);
           $("#multiplication").html("Multiplication: " + multiplied);
         }
@@ -108,10 +110,16 @@
         $("#result").html("Missing Input.");
       }
     }
+    function clearOutput() {
+      $("#result").html("");
+      $("#addition").html("");
+      $("#multiplication").html("");
+      localStorage.removeItem("darkmode")
+    }
     function toggleDarkMode() {
       //if darkmode exists, read it if not create it
       if (localStorage.getItem("darkmode") == null) {
-        localStorage.setItem("darkmode", "false");
+        localStorage.setItem("darkmode", "true");
       } else {
         if (localStorage.getItem("darkmode") == "true") {
           localStorage.setItem("darkmode", "false");

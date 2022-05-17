@@ -24,7 +24,7 @@
   <h4><a class="rainbow" href="https://dumpyy.gq">https://dumpyy.gq</a> <a class="rainbow"
       href="https://github.com/dumpydev">https://github.com/dumpydev</a></h4>
 
-  <div id="fractioninput rainbowbg">
+  <div id="fractionadder">
     <input class="input" id="numerator" type="number" placeholder=" " />
     <input class="input" id="numerator2" type="number" placeholder=" " />
     <span style="padding-top: 8cm; padding-bottom: 8cm; width: 35px">
@@ -46,26 +46,63 @@
       <span>Clear!</span>
     </button>
   </div>
-  <span style="padding-top: 10cm"><br /></span>
   <br />
   <h1 id="result" class="rainbow"></h1>
   <h3 class="rainbow" id="addition"></h3>
   <h3 class="rainbow" id="multiplication"></h3>
   <span style="padding-top: 10cm"><br /></span>
   <br />
-  <code class="rainbow">
-        To make a pair of ideal fractions, the numerator must be the same and
-        both denominators added should equal the numerator, eg. 4/1 and 4/3 are
-        ideal.</code>
-  <p class="rainbow">
-    Libraries Used:
-    <strong><a class="rainbow" href="https://github.com/ekg/fraction.js">fraction.js</a> | <a class="rainbow"
-        href="https://jquery.com/">jquery</a></strong>
+  <span style="padding-top: 10cm"><br /></span>
+  <h1 class="rainbow" style="font-size: 25pt;">Extras</h1>
+  <hr/>
+  <div id="fractioninput">
+    <input class="input" id="an" type="number" placeholder=" " />
+    <input class="input" id="an2" type="number" placeholder=" " />
+    <span style="padding-top: 8cm; padding-bottom: 8cm; width: 35px">
+      <hr style="width: 60px" />
+    </span>
+    <input class="input" id="dn" type="number" placeholder=" " />
+    <input class="input" id="dn2" type="number" placeholder=" " />
+    <span style="padding-top: 20cm"><br /></span>
     <br />
-    Thank you to <strong><a class="rainbow" href="https://codepen.io/yuhomyan">yuhomyan</a> for the <a class="rainbow"
-        href="https://codepen.io/yuhomyan/pen/OJMejWJ">buttons!</a></strong>
-  </p>
-  <p style="font-size: 20pt;" class="rainbow">version <strong>4.4a</strong></p>
+    <button id="add" class="custom-btn btn-7" onclick="addFraction()">
+      <span>Add</span>
+    </button>
+    <button id="multiply" class="custom-btn btn-3" onclick="multiplyFraction()">
+      <span>Multiply</span>
+    </button>
+    <span style="padding-top: 20cm; padding-bottom: 20cm;"><br /></span>
+    <span style="padding-top: 20cm; padding-bottom: 20cm;"><br /></span>
+    <button id="add" class="custom-btn btn-3" onclick="subtractFraction()">
+      <span>Subtract</span>
+    </button>
+    <button id="multiply" class="custom-btn btn-7" onclick="divideFraction()">
+      <span>Divide</span>
+    </button>
+    <h1 class="rainbow" id="output2"></h1>
+  </div>
+  <span style="padding-top: 10cm"><br /></span>
+  
+
+  <footer>
+    <code class="rainbow">
+      To make a pair of ideal fractions, the numerator must be the same and
+      both denominators added should equal the numerator, eg. 4/1 and 4/3 are
+      ideal.</code>
+    <p class="rainbow">
+      Libraries Used:
+      <strong><a class="rainbow" href="https://github.com/ekg/fraction.js">fraction.js</a> | <a class="rainbow"
+          href="https://jquery.com/">jquery</a></strong>
+      <br />
+      Thank you to <strong><a class="rainbow" href="https://codepen.io/yuhomyan">yuhomyan</a> for the <a class="rainbow"
+          href="https://codepen.io/yuhomyan/pen/OJMejWJ">buttons!</a></strong>
+    </p>
+    <p style="font-size: 20pt;" class="rainbow">version <strong>4.5b</strong></p>
+    <p class="rainbow">Official links: <a class="rainbow" href="https://dumpyy.gq/idealfraccalc">dumpyy.gq</a> <a
+        class="rainbow" href="https://dumpydev.github.io/idealfraccalc">github.io</a> <a class="rainbow"
+        href="https://dumpystuff.pages.dev/idealfraccalc">pages.dev</a> </p>
+  </footer>
+
   <script>
     $(document).ready(function () {
       $("#numerator").focus();
@@ -84,6 +121,50 @@
         checkFraction();
       }
     });
+    function addFraction() {
+      var a = $("#an").val();
+      var b = $("#dn").val();
+      var c = $("#an2").val();
+      var d = $("#dn2").val();
+
+      var added = new Fraction(a, b)
+        .add(new Fraction(c, d))
+        .toString();
+      $("#output2").html("<strong>Added:</strong> " + added);
+    }
+    function multiplyFraction() {
+      var a = $("#an").val();
+      var b = $("#dn").val();
+      var c = $("#an2").val();
+      var d = $("#dn2").val();
+
+      var multiplied = new Fraction(a, b)
+        .multiply(new Fraction(c, d))
+        .toString();
+      $("#output2").html("<strong>Multiplied:</strong> " + multiplied);
+    }
+    function subtractFraction() {
+      var a = $("#an").val();
+      var b = $("#dn").val();
+      var c = $("#an2").val();
+      var d = $("#dn2").val();
+
+      var subtracted = new Fraction(a, b)
+        .subtract(new Fraction(c, d))
+        .toString();
+      $("#output2").html("<strong>Subtracted:</strong> " + subtracted);
+    }
+    function divideFraction() {
+      var a = $("#an").val();
+      var b = $("#dn").val();
+      var c = $("#an2").val();
+      var d = $("#dn2").val();
+
+      var divided = new Fraction(a, b)
+        .divide(new Fraction(c, d))
+        .toString();
+      $("#output2").html("<strong>Divided:</strong> " + divided);
+    }
     function checkFraction() {
       var a = $("#numerator").val();
       var b = $("#denominator").val();

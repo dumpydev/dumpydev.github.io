@@ -1,97 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Dumpy's Site</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <p><img src="https://dumpyy.gq/files/ghprofile2.png" alt="banner"></p>
+    <h2 id="hi-im-dumpy-">Hi! Im dumpy.</h2>
+    <p>Hello! I am Andrew (known as dumpy online). I am an Android enthusiast and programmer.</p>
+    <h1 id="featured-project">Featured Project</h1>
+    <p><a href="https://dumpyy.gq/idealfraccalc">Ideal Fraction Calculator</a></p>
+    <h1 id="main-website">Main website</h1>
+    <p><a href="https://dumpyy.xyz">https://dumpyy.xyz</a> </p>
+    <h1 id="side-projects">Side Projects</h1>
+    <p><a href="https://dumpyy.gq">https://dumpyy.gq</a> </p>
+    <h1 id="funny-stuff-">Funny stuff:</h1>
+    <p><a href="https://gist.github.com/dumpydev/">https://gist.github.com/dumpydev/</a></p>
+    <h2 id="things-ive-used-">Things ive used!</h2>
+    <p><img src="https://img.shields.io/badge/-JavaScript-black?style=flat-square&amp;logo=javascript" alt="JavaScript">
+        <img src="https://img.shields.io/badge/-Nodejs-black?style=flat-square&amp;logo=Node.js" alt="Nodejs">
+        <img src="https://img.shields.io/badge/-Python-black?style=flat-square&amp;logo=Python" alt="Python">
+        <img src="https://img.shields.io/badge/-java-E34A86?style=flat-square&amp;logo=java" alt="Java">
+        <img src="https://img.shields.io/badge/-C++-00599C?style=flat-square&amp;logo=c" alt="C++">
+        <img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&amp;logo=html5&amp;logoColor=white"
+            alt="HTML5">
+        <img src="https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&amp;logo=css3" alt="CSS3">
+        <img src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&amp;logo=typescript"
+            alt="TypeScript">
+        <img src="https://img.shields.io/badge/-MySQL-black?style=flat-square&amp;logo=mysql" alt="MySQL">
+        <img src="https://img.shields.io/badge/-Heroku-430098?style=flat-square&amp;logo=heroku" alt="Heroku">
+        <img src="https://img.shields.io/badge/-Docker-black?style=flat-square&amp;logo=docker" alt="Docker">
+        <img src="https://img.shields.io/badge/-Digital%20Ocean-darkblue?style=flat-square&amp;logo=digitalocean"
+            alt="DigitalOcean">
+        <img src="https://img.shields.io/badge/Amazon%20AWS-232F3E?style=flat-square&amp;logo=amazon-aws"
+            alt="Amazon AWS">
+        <img src="https://img.shields.io/badge/Microsoft%20Azure-232F7E?style=flat-square&amp;logo=microsoft-azure"
+            alt="Microsoft Azure">
+        <img src="https://img.shields.io/badge/Google%20Cloud-black?style=flat-square&amp;logo=google-cloud"
+            alt="Google Cloud">
+        <img src="https://img.shields.io/badge/-Git-black?style=flat-square&amp;logo=git" alt="Git">
+    </p>
+    <h1 id="contact-me-">Contact Me!</h1>
+    <p>
+        <a href="mailto:andy@dumpyy.xyz"><img
+                src="https://img.shields.io/badge/-andy@dumpyy.xyz-c14438?style=flat-square&amp;logo=Gmail&amp;logoColor=white&amp;link=mailto:andy@dumpyy.xyz"
+                alt="Gmail Badge"></a>
+        <a href="https://t.me/AndyWang14" title="Contact on Telegram"><img
+                src="https://img.shields.io/badge/-@AndyWang13-0088CC?style=flat&amp;logo=Telegram&amp;logoColor=white"
+                alt="Telegram Badge"></a>
+    </p>
+    <input id="message" type="text" placeholder="Send me a message!">
+    <h3 id="github-statistics">GitHub Statistics</h3>
+    <p><img src="https://github-readme-stats.vercel.app/api?username=dumpydev&amp;count_private=true&amp;show_icons=true&amp;include_all_commits=true&amp;theme=tokyonight&amp;show_owner=true"
+            alt="Github Stats">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=dumpydev&amp;hide=TeX&amp;layout=compact&amp;theme=tokyonight&amp;langs_count=8"
+            alt="Top Langs">
+    </p>
+    <details>
+        <summary>Recent GitHub Activity</summary>
+        <br />
+        <a href="https://github.com/ashutosh00710/github-readme-activity-graph"><img alt="Dumpydev's Activity Graph"
+                src="https://activity-graph.herokuapp.com/graph?username=dumpydev&custom_title=dumpydev's%20Contribution%20Graph&bg_color=1F222E&color=F8D866&line=F85D7F&point=FFFFFF&hide_border=true" /></a>
+        <br />
+    </details>
+    <footer>
+        <h1>&copy; 2022 Dumpy</h1>
+        <hr>
+        <p>Hosted on OCI</p>
+    </footer>
+
+</body>
+
+
+</html>
+<script>
+    function sendMessage() {
+        //send message to the server
+        var message = document.getElementById("message").value;
+        //ajax request using jquery
+        var settings = {
+            "url": "http://168.138.3.116:3000",
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+                "message": message
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    
+    }
+    $('#message').keypress(function (e) {
+        if (e.which == 13) {
+            sendMessage();
+        }
+    });
+</script>
+
 <style>
-  html {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    text-align: center;
-
-    background: linear-gradient(to right, #6666ff, #0099ff, #7d00c5, #ff3399, #6666ff);
-    color: transparent;
-    animation: rainbow_animation 5s ease-in-out infinite;
-    background-size: 400% 100%;
-
-  }
-
-  p {
-    color: white;
-  }
-
-  h1 {
-    color: white;
-  }
-
-  h2 {
-    color: white;
-  }
-
-  a {
-    color: white;
-  }
-
-  @keyframes rainbow_animation {
-
-    0%,
-    100% {
-      background-position: 0 0;
+    html {
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        text-align: center;
+        background: linear-gradient(to right, #6666ff, #0099ff, #7d00c5, #ff3399, #6666ff);
+        color: transparent;
+        animation: rainbow_animation 5s ease-in-out infinite;
+        background-size: 400% 100%;
     }
 
-    50% {
-      background-position: 200% 0;
+    p {
+        color: white;
     }
-  }
+
+    h1 {
+        color: white;
+    }
+
+    h2 {
+        color: white;
+    }
+
+    a {
+        color: white;
+    }
+
+    @keyframes rainbow_animation {
+
+        0%,
+        100% {
+            background-position: 0 0;
+        }
+
+        50% {
+            background-position: 200% 0;
+        }
+    }
 </style>
-<p><img src="https://dumpyy.gq/files/ghprofile2.png" alt="banner"></p>
-<h2 id="hi-im-dumpy-">Hi! Im dumpy.</h2>
-<p>Hello! I am Andrew (known as dumpy online). I am an Android enthusiast and programmer.</p>
-<h1 id="featured-project">Featured Project</h1>
-<p><a href="https://dumpyy.gq/idealfraccalc">Ideal Fraction Calculator</a></p>
-<h1 id="main-website">Main website</h1>
-<p><a href="https://dumpyy.xyz">https://dumpyy.xyz</a> </p>
-<h1 id="side-projects">Side Projects</h1>
-<p><a href="https://dumpyy.gq">https://dumpyy.gq</a> </p>
-<h1 id="funny-stuff-">Funny stuff:</h1>
-<p><a href="https://gist.github.com/dumpydev/">https://gist.github.com/dumpydev/</a></p>
-<h2 id="things-ive-used-">Things ive used!</h2>
-<p><img src="https://img.shields.io/badge/-JavaScript-black?style=flat-square&amp;logo=javascript" alt="JavaScript">
-  <img src="https://img.shields.io/badge/-Nodejs-black?style=flat-square&amp;logo=Node.js" alt="Nodejs">
-  <img src="https://img.shields.io/badge/-Python-black?style=flat-square&amp;logo=Python" alt="Python">
-  <img src="https://img.shields.io/badge/-java-E34A86?style=flat-square&amp;logo=java" alt="Java">
-  <img src="https://img.shields.io/badge/-C++-00599C?style=flat-square&amp;logo=c" alt="C++">
-  <img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&amp;logo=html5&amp;logoColor=white"
-    alt="HTML5">
-  <img src="https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&amp;logo=css3" alt="CSS3">
-  <img src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&amp;logo=typescript" alt="TypeScript">
-  <img src="https://img.shields.io/badge/-MySQL-black?style=flat-square&amp;logo=mysql" alt="MySQL">
-  <img src="https://img.shields.io/badge/-Heroku-430098?style=flat-square&amp;logo=heroku" alt="Heroku">
-  <img src="https://img.shields.io/badge/-Docker-black?style=flat-square&amp;logo=docker" alt="Docker">
-  <img src="https://img.shields.io/badge/-Digital%20Ocean-darkblue?style=flat-square&amp;logo=digitalocean"
-    alt="DigitalOcean">
-  <img src="https://img.shields.io/badge/Amazon%20AWS-232F3E?style=flat-square&amp;logo=amazon-aws" alt="Amazon AWS">
-  <img src="https://img.shields.io/badge/Microsoft%20Azure-232F7E?style=flat-square&amp;logo=microsoft-azure"
-    alt="Microsoft Azure">
-  <img src="https://img.shields.io/badge/Google%20Cloud-black?style=flat-square&amp;logo=google-cloud"
-    alt="Google Cloud">
-  <img src="https://img.shields.io/badge/-Git-black?style=flat-square&amp;logo=git" alt="Git">
-</p>
-<h1 id="contact-me-">Contact Me!</h1>
-<p><a href="mailto:andy@dumpyy.xyz"><img
-      src="https://img.shields.io/badge/-andy@dumpyy.xyz-c14438?style=flat-square&amp;logo=Gmail&amp;logoColor=white&amp;link=mailto:andy@dumpyy.xyz"
-      alt="Gmail Badge"></a>
-  <a href="https://t.me/AndyWang14" title="Contact on Telegram"><img
-      src="https://img.shields.io/badge/-@AndyWang13-0088CC?style=flat&amp;logo=Telegram&amp;logoColor=white"
-      alt="Telegram Badge"></a>
-</p>
-<h3 id="github-statistics">GitHub Statistics</h3>
-<p><img
-    src="https://github-readme-stats.vercel.app/api?username=dumpydev&amp;count_private=true&amp;show_icons=true&amp;include_all_commits=true&amp;theme=tokyonight&amp;show_owner=true"
-    alt="Github Stats">
-  <img
-    src="https://github-readme-stats.vercel.app/api/top-langs/?username=dumpydev&amp;hide=TeX&amp;layout=compact&amp;theme=tokyonight&amp;langs_count=8"
-    alt="Top Langs">
-</p>
-<details>
-  <summary>Recent GitHub Activity</summary>
-  <br />
-  <a href="https://github.com/ashutosh00710/github-readme-activity-graph"><img alt="Dumpydev's Activity Graph"
-      src="https://activity-graph.herokuapp.com/graph?username=dumpydev&custom_title=dumpydev's%20Contribution%20Graph&bg_color=1F222E&color=F8D866&line=F85D7F&point=FFFFFF&hide_border=true" /></a>
-  <br />
-</details>
